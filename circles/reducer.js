@@ -17,18 +17,16 @@ const initialState = [
     },
 ];
 
-//random function (generic, could be simplified since min always = 0)
-let random = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+//random function
+let random = (max) => {
+    return Math.floor(Math.random() * max);
   }
 
 //reducer function handling dispatch of actions, spread original state array into the return statement, add in a random circle using the random index from random()
 const reducer = (state = initialState, action) => {
     // Handle actions here - make sure you don't mutate the state!
     const { type } = action;
-    let index = random(0, state.length);
+    let index = random(state.length);
 
     // ACTION: Add a random circle
     if (type === "ADD") {
