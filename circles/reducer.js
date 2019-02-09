@@ -17,22 +17,20 @@ const initialState = [
     },
 ];
 
-//random function
-let random = (max) => {
-    return Math.floor(Math.random() * max);
-  }
 
 //reducer function handling dispatch of actions, spread original state array into the return statement, add in a random circle using the random index from random()
 const reducer = (state = initialState, action) => {
     // Handle actions here - make sure you don't mutate the state!
-    const { type } = action;
-    let index = random(state.length);
+    const { type, radius, color } = action;
 
     // ACTION: Add a random circle
     if (type === "ADD") {
         return [
             ...state,
-            state[index]
+            {
+                radius: radius,
+                color: color
+            }
         ]
     }
     return state;
